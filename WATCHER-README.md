@@ -1,8 +1,12 @@
 ## Steps to deploy Persistent Volume watcher for updating firewall rules
 
 **1. Build Watcher image**
-
+Note: Set GOPATH properly.
 ```
+mkdir -p $GOPATH/src/github.com/IBM/
+git clone -b watcher https://github.com/mssachan/ibmcloud-object-storage-plugin.git
+cd ibmcloud-object-storage-plugin
+go mod vendor
 docker build -t provisioner-builder --pull -f images/watcher/Dockerfile.builder .
 docker run provisioner-builder /bin/true
 docker cp `docker ps -q -n=1`:/root/ca-certs.tar.gz ./
