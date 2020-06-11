@@ -32,7 +32,7 @@ spec:
       serviceAccountName: ibmcloud-object-storage-plugin-watcher
       containers:
         - name: pv-watcher-container
-          image: mayanksachan/ibmcloud-object-storage-plugin-pv-watcher:v1
+          image: mayanksachan/ibmcloud-object-storage-plugin-pv-watcher:v2
           imagePullPolicy: Always
           env:
           - name: DEBUG_TRACE
