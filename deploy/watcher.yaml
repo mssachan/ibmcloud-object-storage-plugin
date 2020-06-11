@@ -29,7 +29,7 @@ spec:
                 - amd64
       tolerations:
       - operator: "Exists"
-      serviceAccountName: ibmcloud-object-storage-plugin
+      serviceAccountName: ibmcloud-object-storage-plugin-watcher
       containers:
         - name: pv-watcher-container
           image: mayanksachan/ibmcloud-object-storage-plugin-pv-watcher:v1
