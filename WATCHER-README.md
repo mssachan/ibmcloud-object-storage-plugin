@@ -15,7 +15,7 @@ docker build \
      --build-arg git_commit_id=${GIT_COMMIT_SHA} \
      --build-arg git_remote_url=${GIT_REMOTE_URL} \
      --build-arg build_date=${BUILD_DATE} \
-     -t <image>:<tag> -f ./images/provisioner/Dockerfile .
+     -t <image>:<tag> -f ./images/watcher/Dockerfile .
 rm -f watcher.tar.gz
 rm -f ca-certs.tar.gz
 ```
