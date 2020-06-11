@@ -7,8 +7,8 @@ mkdir -p $GOPATH/src/github.com/IBM/
 git clone -b watcher https://github.com/mssachan/ibmcloud-object-storage-plugin.git
 cd ibmcloud-object-storage-plugin
 go mod vendor
-docker build -t provisioner-builder --pull -f images/watcher/Dockerfile.builder .
-docker run provisioner-builder /bin/true
+docker build -t watcher-builder --pull -f images/watcher/Dockerfile.builder .
+docker run watcher-builder /bin/true
 docker cp `docker ps -q -n=1`:/root/ca-certs.tar.gz ./
 docker cp `docker ps -q -n=1`:/root/watcher.tar.gz ./
 docker build \
