@@ -1,7 +1,7 @@
 ## Steps to deploy Persistent Volume watcher for updating firewall rules
 
-**1. Build Watcher image**
-Note: Set GOPATH properly.
+**1. Build Watcher image**<br>
+**Note:** Set GOPATH properly.
 ```
 mkdir -p $GOPATH/src/github.com/IBM/
 git clone -b watcher https://github.com/mssachan/ibmcloud-object-storage-plugin.git
