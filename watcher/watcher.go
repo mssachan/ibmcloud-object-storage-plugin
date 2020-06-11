@@ -154,8 +154,9 @@ func ValidatePersistentVolume(pvObj interface{}) {
 				_, errPatch := clientset.Core().PersistentVolumes().Patch(pvmetadata.Name, types.MergePatchType, []byte(patchData))
 				if errPatch != nil {
 					lgr.Error("Failed to patch annotations", zap.String("for PV", pvmetadata.Name), zap.Error(errPatch))
+				} else {
+					lgr.Info("Annotations updated successfully", zap.String("for PV", pvmetadata.Name))	
 				}
-				lgr.Info("Annotations updated successfully", zap.String("for PV", pvmetadata.Name))
 			}
 		}
 	}
