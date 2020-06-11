@@ -40,11 +40,10 @@ type pvAnnotations struct {
 	AutoDeleteBucket     bool   `json:"ibm.io/auto-delete-bucket,string"`
 	Bucket               string `json:"ibm.io/bucket"`
 	ObjectPath           string `json:"ibm.io/object-path,omitempty"`
-	Endpoint             string `json:"ibm.io/endpoint,omitempty"` //Will be deprecated
-	Region               string `json:"ibm.io/region,omitempty"`   //Will be deprecated
+	Endpoint             string `json:"ibm.io/endpoint,omitempty"`
+	Region               string `json:"ibm.io/region,omitempty"`
 	SecretName           string `json:"ibm.io/secret-name"`
 	SecretNamespace      string `json:"ibm.io/secret-namespace,omitempty"`
-	AllowedIPs           string `json:"ibm.io/allowed_ips,omitempty"`
 	ProvisionedBy        string `json:"pv.kubernetes.io/provisioned-by"`
 	FirewallRulesApplied bool   `json:"ibm.io/firewalls-rules-applied,string"`
 }
@@ -147,7 +146,7 @@ func ValidatePersistentVolume(pvObj interface{}) {
 			if err != nil {
 				lgr.Error(pvmetadata.Name+":"+"Setting firewall rules failed", zap.String("Bucket", annots.Bucket), zap.Reflect("Error", err))
 			} else {
-				lgr.Info("Updation of persistent volume firewall rules completed successfully")
+				lgr.Info("Firewall rules for persistent volume updated successfully")
 				annots.FirewallRulesApplied = true
 				jsonAnnots, _ := json.Marshal(annots)
 				patchData := "{\"metadata\": {\"annotations\":" + string(jsonAnnots) + "}}"
